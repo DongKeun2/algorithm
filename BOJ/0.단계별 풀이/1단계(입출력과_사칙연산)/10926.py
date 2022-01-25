@@ -1,0 +1,5 @@
+# ??!
+
+word = input()
+
+print(word+'??!')
