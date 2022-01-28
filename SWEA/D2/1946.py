@@ -1,16 +1,24 @@
-# 시각 덧셈
+# 간단한 압출 풀기
+
+T = int(input())
 
 T = int(input())
 
 for i in range(1, T+1):
-    h1, m1, h2, m2 = list(map(int, input().split()))
+    N = int(input())
+    print(f'#{i}')
+    result =[]
+    for _ in range(N):
+        Ci, Ki = map(str, input().split())
+        result.append(f'{Ci}'*int(Ki))
+    word = ''.join(str(r) for r in result)
 
-    h = h1 + h2
-    m = m1 + m2
-    if m >= 60:
-        h += 1
-        m -= 60
-    if h > 12:
-        h -= 12
-    
-    print(f'#{i} {h} {m}')
+    cnt = len(word)//10
+
+    results = []
+    for k in range(0, cnt):
+        results.append(word[k*10:(k+1)*10])
+    results.append(word[cnt*10:])
+
+    for k in range(len(results)):
+        print(results[k])
