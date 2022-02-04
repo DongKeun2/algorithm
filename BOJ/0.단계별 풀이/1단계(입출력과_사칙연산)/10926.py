@@ -1,5 +1,0 @@
-# ??!
-
-word = input()
-
-print(word+'??!')
