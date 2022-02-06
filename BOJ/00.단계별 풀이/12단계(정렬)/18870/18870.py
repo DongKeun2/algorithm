@@ -2,15 +2,17 @@
 
 N = int(input())
 
-list_num = list(map(int, input().split()))
+nl = list(map(int, input().split()))
 
-list_2 = list(set(list_num))
+snl = sorted(list(set(nl)))
 
-list_2.sort()
+dnl = {}
 
-for i in range(len(list_2)):
-    for j in range(len(list_num)):
-        if list_2[i] == list_num[j]:
-            list_num[j] = str(i)
+for i in range(len(snl)):
+    dnl[snl[i]] = i
 
-print(' '.join(list_num))
+result = []
+for n in nl:
+    result.append(dnl[n])
+
+print(*result)
