@@ -2,7 +2,7 @@
 
 T = int(input())
 
-for i in range(T):
+for i in range(1, T+1):
     s = input()
     a, b = 1, 1
     for k in s:

@@ -7,8 +7,8 @@ for i in range(1, T+1):
     p = list(map(int, input().split()))
     cnt = 0
     for k in range(n):
-        if k == 0 and k == n-1:
-            if p[k-1] < p[k] < p[k] or p[k-1] > p[k] > p[k]:
+        if k != 0 and k != (n-1):
+            if p[k-1] < p[k] < p[k+1] or p[k-1] > p[k] > p[k+1]:
                 cnt += 1
 
     print(f'#{i} {cnt}')
