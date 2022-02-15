@@ -1,5 +1,5 @@
 # sw문제해결 기본 2일차
-# Ladder 1
+# Ladder1
 
 T = 10
 
@@ -9,9 +9,9 @@ for _ in range(T):
 
     di = [1, 0, 0]
     dj = [0, 1, -1]
-    result = 0
+    result = -1
     for i in range(100):
-        if result != 0:
+        if result != -1:
             break
         d = 0
         ni = 0
