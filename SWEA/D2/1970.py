@@ -7,14 +7,14 @@ for i in range(1, T+1):
     N = int(input())
 
     money = [50000, 10000, 5000, 1000, 500, 100, 50, 10]
-    num = []
-    for k in range(len(money)):
-        if N >= money[k]:
-            num.append(N//money[k])
-            N -= (N//money[k]) * money[k]
+    result = []
+    for j in range(len(money)):
+        if N >= money[j]:
+            result.append(N//money[j])
+            N -= (N//money[j]) * money[j]
         else:
-            num.append(0)
-        result = ' '.join(str(n) for n in num)
+            result.append(0)
+
 
     print(f'#{i}')
-    print(result)
+    print(*result)
