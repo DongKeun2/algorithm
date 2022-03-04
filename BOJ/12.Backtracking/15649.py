@@ -3,6 +3,7 @@
 def sol(lst):
     if len(result) == M:
         print(*result)
+        return
     else:
         for i in range(N):
             if v[i] == 0:
