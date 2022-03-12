@@ -4,7 +4,11 @@
 
 N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
+
+# 선수 명단
 lst = [0 for _ in range(N)]
+
+# 스타트 팀 명단
 st = []
 for i in range(1<<N):
     team = []
@@ -14,6 +18,7 @@ for i in range(1<<N):
     if len(team) == N//2:
         st.append(team)
 
+# 링크 팀 명단
 lt = []
 for stm in st:
     team = []
@@ -22,6 +27,7 @@ for stm in st:
             team.append(i)
     lt.append(team)
 
+# 두 팀의 전력 차이 갱신
 result = 2000
 for i in range(len(st)):
     tot1 = 0
@@ -40,4 +46,3 @@ for i in range(len(st)):
         result = abs(tot1-tot2)
 
 print(result)
-        
