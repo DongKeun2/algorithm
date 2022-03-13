@@ -10,7 +10,7 @@ def sol(i, j, flag):
     if i == N-1 and j == N-1:
         cnt += 1
         return
-    
+
     # 가로 세로 끝 부분에서 더 이상 못 가는 상태라면 종료
     elif i == N-1 and flag == 1:
         return
