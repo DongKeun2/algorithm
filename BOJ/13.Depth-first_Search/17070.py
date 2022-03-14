@@ -1,7 +1,7 @@
 # 파이프 옮기기 1
 # 그래프이론, 다이나믹프로그래밍
 
-# 시간초과...  => dp로 다시 풀기
+# pypy통과 => dp로 다시 풀기
 
 # dfs
 def sol(i, j, flag):
@@ -33,7 +33,7 @@ def sol(i, j, flag):
             if i+1 < N and j+1 < N and arr[i+1][j+1] == 0 and arr[i][j+1] == 0 and arr[i+1][j] == 0:
                 sol(i+1, j+1, 2)
 
-        # 대각선 : 가로 amd 세로 and 대각선 이동
+        # 대각선 : 가로 and 세로 and 대각선 이동
         else:
             if j+1 < N and arr[i][j+1] == 0:
                 sol(i, j+1, 0)
@@ -51,6 +51,8 @@ flag = 0
 i = 0
 j = 1
 cnt = 0
-sol(i, j, flag)
-
-print(cnt)
+if arr[N-1][N-1]:
+    print(cnt)
+else:
+    sol(i, j, flag)
+    print(cnt)
