@@ -1,4 +1,6 @@
 # BFS 스페셜 저지
+# pypy3 통과, python3 시간초과
+
 from collections import deque
 import sys
 input = sys.stdin.readline
