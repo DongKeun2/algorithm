@@ -13,8 +13,8 @@ arr[0].append(1)
 
 lst = list(map(int, input().split()))
 
-idx = 0
-st = [0]
+idx = 1
+st = [1]
 result = 1
 while True:
     if st == []:
