@@ -1,4 +1,6 @@
 # ABCDE
+import sys
+input = sys.stdin.readline
 
 # dfs
 def sol(cnt, n):
