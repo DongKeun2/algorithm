@@ -1,6 +1,5 @@
 # 트리의 지름
 
-from collections import deque
 import sys
 input = sys.stdin.readline
 
@@ -42,4 +41,3 @@ vst[end] = 1
 sol(end, 0)
 
 print(result)
-
