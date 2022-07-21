@@ -1,4 +1,6 @@
 # 상근이의 여행
+
+# 그래프이론,트리 ..?
 import sys
 input = sys.stdin.readline
 
