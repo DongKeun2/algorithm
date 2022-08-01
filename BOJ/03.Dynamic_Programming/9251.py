@@ -3,13 +3,17 @@
 import sys
 input = sys.stdin.readline
 
-n = input()
-m = input()
+n = input().rstrip()
+m = input().rstrip()
 
-lst = [0] * len(n)
-for i in range(len(m)):
-    for j in range(len(n))[::-1]:
-        if max(lst[:(j+1)]) >= lst[j] and m[i] == n[j]:
-            lst[j] = max(lst[:(j+1)]) + 1
+arr = [[0]*(len(m)+1) for _ in range(len(n)+1)]
+for i in range(len(n)+1):
+    for j in range(len(m)+1):
+        if i == 0 or j == 0:
+            arr[i][j] = 0
+        elif n[i-1] == m[j-1]:
+            arr[i][j] = arr[i-1][j-1] + 1
+        else:
+            arr[i][j] = max(arr[i-1][j], arr[i][j-1])
 
-print(max(lst))
+print(arr[len(n)][len(m)])
