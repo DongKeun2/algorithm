@@ -1,11 +1,16 @@
 # 숫자 조작
+# 후우
 
-def n_max_m(ln):
+def nm(ln):
     pass
 
 
-def n_min_m(ln):
+def nn(ln):
     pass
+
+                    
+
+
 
 
 T = int(input())
@@ -13,5 +18,4 @@ T = int(input())
 for i in range(1, T+1):
     n = str(input())
 
-    ln = [(x, i) for x, i in enumerate(n)]
-
+    ln = [int(x) for x in n]

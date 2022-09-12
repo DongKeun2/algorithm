@@ -30,6 +30,7 @@ def sol(a, b):
         else:
             break
 
+
     if tmp_a:
         result = b
         return
