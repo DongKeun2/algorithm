@@ -1,4 +1,8 @@
 # 네트워크 연결
+# import sys 이후 49090KB, 284ms
+# 이전에는 49084KB, 4396ms
+import sys
+input = sys.stdin.readline
 
 # 대표를 찾는 재귀 함수
 # 거쳐가는 모든 값에 대표값 저장
