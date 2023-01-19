@@ -1,4 +1,4 @@
-# 2023 카카오 블라인트
+# 2023 카카오 블라인드
 # LV1
 
 def solution(today, terms, privacies):
