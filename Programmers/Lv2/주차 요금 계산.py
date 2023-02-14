@@ -1,3 +1,5 @@
+# 2022 카카오 블라인드 Lv2
+
 import math
 
 def solution(fees, records):
