@@ -1,3 +1,6 @@
+# 도둑질 Lv4 (스킬 레벨 테스트 Lv4에서 푼 문제)
+# 동적계획법(Dynamic Programming)
+
 # DP로 풀이
 def solution(money):
     money = [0] + money
