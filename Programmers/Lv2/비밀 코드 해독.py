@@ -1,44 +1,64 @@
-# 2025 프로그래머스 코드챌린지 1차 예선 lv2
-
 from itertools import combinations
+import math
 
-def factorial(n):
-    if n == 0: return 1
-    else: return n * factorial(n-1)
-
+# 만약 n이 큰 경우, 완탐으로 불가
 def get_comb_cnt(n, r):
     if r < 0 or r > n: return 0
-    return factorial(n) // (factorial(r) * factorial(n-r))
+    return math.comb(n, r)
 
 def solution(n, q, ans):
-    global answer
-    def sol(lst, trash_lst, idx):
-        global answer
-        if len(lst) > 5:
-            return
-        if idx >= 5:
-            total_num_cnt = n - len(lst), len(trash_lst)
-            bonus_cnt = 5 - len(lst)
-            answer += get_comb_cnt(total_num_cnt, bonus_cnt)
-            return
-        
-        # lst에 있는 값이 q[idx]에 ans이상 있는 지 확인 후 리턴
-        # ans보다 크다면 리턴
-        # 같다면 모두 trash에 넣은 후 재귀
-        # 부족하다면 ans에 맞춰 조합을 구하여 lst, 나머지는 trash에 넣고 재귀
-        ## 이 때 이미 trash에 있는 값은 lst에 넣지 않도록 주의
-        for x in combinations(q[idx], ans[idx]):
-            return
-    
-    
-    answer = 0
-    sol([], [], 0)
-    return answer
-n1 = 10
-q1 = [[1, 2, 3, 4, 5], [6, 7, 8, 9, 10], [3, 7, 8, 9, 10], [2, 5, 7, 9, 10], [3, 4, 5, 6, 7]]
-ans1 = 	[2, 3, 4, 3, 3]
+    def sol(selected, rejected, idx):
+        if len(selected) > 5 or idx > len(q):
+            return 0
+        if idx == len(q):
+            # 남은 숫자 중에서 5개를 채울 수 있는 조합 수 반환
+            total_remaining = n - len(selected) - len(rejected)
+            need = 5 - len(selected)
+            return get_comb_cnt(total_remaining, need)
 
-n2 =15
-q2 = [[2, 3, 9, 12, 13], [1, 4, 6, 7, 9], [1, 2, 8, 10, 12], [6, 7, 11, 13, 15], [1, 4, 10, 11, 14]]
-ans2 = [2, 1, 3, 0, 1]
-solution(n1, q1, ans1)
+        current_try = q[idx]
+        expected_match = ans[idx]
+
+        # selected에서 이미 일치한 숫자 수
+        matched = len(set(current_try) & set(selected))
+        if matched > expected_match:
+            return 0
+
+        # current_try에서 아직 선택되지 않고 거절도 안 된 숫자들만 필터
+        remaining = [x for x in current_try if x not in selected and x not in rejected]
+
+        # 현재 시도에서 더 뽑아야 할 숫자 수
+        needed_from_remaining = expected_match - matched
+        if needed_from_remaining > len(remaining):
+            return 0
+
+        total = 0
+
+        # remaining에서 needed_from_remaining 개수만큼 선택하는 조합을 모두 탐색
+        for combo in combinations(remaining, needed_from_remaining):
+            new_selected = selected + list(combo)
+            new_rejected = rejected + [x for x in remaining if x not in combo]
+            total += sol(new_selected, new_rejected, idx + 1)
+
+        return total
+
+    return sol([], [], 0)
+
+
+
+# 기존 풀이
+from itertools import combinations
+
+def solution(n, q, ans):
+    answer = 0
+    m = len(q)
+    for comb in combinations(range(1, n+1), 5):
+        flag = True
+        for i in range(m):
+            if not flag: break
+            cnt = 0
+            for el in q[i]:
+                if el in comb: cnt += 1
+            if cnt != ans[i]: flag = False
+        if flag: answer += 1
+    return answer
